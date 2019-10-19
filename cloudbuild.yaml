@@ -9,11 +9,11 @@ steps:
     args: ['ps']
 
   - id: "executando-go"
-    name: 'gcr.io/$PROJECT_ID/go'
+    name: 'gcr.io/cloud-builders/go'
     args: ['run', 'soma.go']
     env: ['GOPATH=/app']
 
   - id: "executando-teste-unitario"
-    name: 'gcr.io/$PROJECT_ID/go'
+    name: 'gcr.io/cloud-builders/go'
     args: ['test', '-cover']
     env: ['GOPATH=/app']
