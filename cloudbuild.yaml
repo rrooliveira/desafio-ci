@@ -4,6 +4,10 @@ steps:
     name: 'gcr.io/$PROJECT_ID/docker-compose'
     args: ['-f', 'docker-compose.cloudbuild.yaml', 'up', '-d']
 
+  - id: "rodando-docker-ps"
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['ps']
+
   - id: "executando-go"
   - name: 'gcr.io/$PROJECT_ID/go'
     args: ['run', 'soma.go']
