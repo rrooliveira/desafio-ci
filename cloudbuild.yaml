@@ -8,10 +8,6 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args: ['ps']
 
-  - id: "rodando-docker-composer"
-    name: 'gcr.io/cloud-builders/docker'
-    args: ['exec','-t','app','composer','install']
-
   - id: "executando-go"
   - name: 'gcr.io/$PROJECT_ID/go'
     args: ['run', 'soma.go']
