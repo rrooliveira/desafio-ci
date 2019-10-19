@@ -1,0 +1,23 @@
+steps:
+
+  - id: "rodando-docker-compose"
+    name: 'gcr.io/$PROJECT_ID/docker-compose:1.24.0'
+    args: ['-f', 'docker-compose.cloudbuild.yaml', 'up', '-d']
+
+  - id: "rodando-docker-ps"
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['ps']
+
+  - id: "rodando-docker-composer"
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['exec','-t','app','composer','install']
+
+  - id: "executando-go"
+  - name: 'gcr.io/$PROJECT_ID/go'
+    args: ['run', 'soma.go']
+    env: ['GOPATH=/app']
+
+  - id: "executando-teste-unitario"
+  - name: 'gcr.io/$PROJECT_ID/go'
+    args: ['test', '-cover']
+    env: ['GOPATH=/app']
